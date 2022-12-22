@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-curly-spacing */
-/* eslint-disable react/self-closing-comp */
-/* eslint-env es6 */
-/* eslint-disable no-console */
+
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import PlayPause from './PlayPause';
@@ -9,15 +6,22 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
 
 
 const SongCard = (song, isPlaying, activeSong, data, i) => {
+  const newSong = song.song;
+  // console.log(newSong);
+  const dispatch = useDispatch();
 
-  // const activeSong = 'Test';
   const handlePauseClick = () => {
-
+    dispatch(playPause(false));
   }
   const handlePlayClick = () =>{
+    dispatch(setActiveSong({song, data, i}));
+    dispatch(playPause(true));
+  };
 
-  }
-  console.log(song);
+  // console.log(JSON.stringify(activeSong));
+
+  // console.log(song);
+  // console.log(activeSong);
 
   
 
@@ -28,9 +32,10 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
           <PlayPause 
             isPlaying={isPlaying}
             activeSong={activeSong}
-            song ={song}
+            song ={song.song}
             handlePause={handlePauseClick}
-            handlePlay={handlePauseClick}/>
+            handlePlay={handlePlayClick}
+          />
         </div>
         <img alt="song_img" src={song.song.images?.coverart || "https://th.bing.com/th/id/OIP.zl3PcrZaVLg5_htGHrHPAQAAAA?pid=ImgDet&rs=1"} />
       </div>
