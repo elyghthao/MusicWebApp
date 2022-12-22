@@ -1,14 +1,16 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/jsx-closing-bracket-location */
-/* eslint-disable react/jsx-closing-tag-location */
+
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Error, Loader, SongCard } from '../components';
 import { genres } from '../assets/constants';
 
 import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 
+
+
 const Discover = () => {
+  const dispatch = useDispatch();
+  const {activeSong, isPlaying} = useSelector((state) => state.player);
   const genreTitle = 'Pop';
 
   const { data, isFetching, error } = useGetTopChartsQuery();
@@ -16,7 +18,8 @@ const Discover = () => {
   if (isFetching) return <Loader title="Loading songs..." />;
 
   // eslint-disable-next-line no-console
-  //   console.log(data);
+    // console.log(data);
+    console.log("in discover");
 
   return (
     <div className="flex flex-col">
@@ -34,11 +37,15 @@ const Discover = () => {
         </select>
       </div>
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-      {data?.map((song, i) => (
+      {data.map((song, i) => (
         <SongCard
           key={song.key}
           song={song}
-          i={i} />
+          i={i} 
+          isPlaying={isPlaying}
+          activeSong={activeSong}
+          data={data}
+          />
       ))}
       </div>
 
