@@ -17,11 +17,8 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
     dispatch(setActiveSong({song, data, i}));
     dispatch(playPause(true));
   };
-
-  // console.log(JSON.stringify(activeSong));
-
   // console.log(song);
-  // console.log(activeSong);
+
 
   
 
@@ -32,7 +29,7 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
           <PlayPause 
             isPlaying={isPlaying}
             activeSong={activeSong}
-            song ={song.song}
+            song ={song}
             handlePause={handlePauseClick}
             handlePlay={handlePlayClick}
           />

@@ -20,7 +20,7 @@ const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate
     ref.current.currentTime = seekTime;
   }, [seekTime]);
 
-  console.log(activeSong.song.hub.actions !== undefined);
+  // console.log(state);
   if(activeSong.song.hub.actions !== undefined){
     return (
       <audio

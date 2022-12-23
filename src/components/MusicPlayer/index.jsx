@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { nextSong, prevSong, playPause } from '../../redux/features/playerSlice';
+import { nextSong, prevSong, playPause, setActiveSong } from '../../redux/features/playerSlice';
 import Controls from './Controls';
 import Player from './Player';
 import Seekbar from './Seekbar';
 import Track from './Track';
 import VolumeBar from './VolumeBar';
+
 
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } = useSelector((state) => state.player);
@@ -33,22 +34,85 @@ const MusicPlayer = () => {
   };
 
   const handleNextSong = () => {
-    dispatch(playPause(false));
-
+    // dispatch(playPause(false));
+    // console.log(currentSongs);
     if (!shuffle) {
-      dispatch(nextSong((currentIndex + 1) % currentSongs.length));
+      // console.log(activeSong);
+      // dispatch(nextSong((currentIndex + 1) % currentSongs.length));
+      const randomNum = (activeSong.i + 1) % currentSongs.length;
+      const data = activeSong.data;
+      const i = activeSong.i;
+      const song = {
+        activeSong : activeSong.activeSong,
+        data : activeSong.data,
+        i : randomNum,
+        isPlaying: activeSong.isPlaying,
+        song: currentSongs[randomNum]
+      }
+      dispatch(setActiveSong({song, data, i}));
+      dispatch(playPause(true));
+      // console.log(randomNum);
     } else {
-      dispatch(nextSong(Math.floor(Math.random() * currentSongs.length)));
+      // dispatch(nextSong(Math.floor(Math.random() * currentSongs.length)));
+      const randomNum = Math.trunc(Math.random() * currentSongs.length);
+      // console.log(randomNum);
+      const data = activeSong.data;
+      const i = activeSong.i;
+      const song = {
+        activeSong : activeSong.activeSong,
+        data : activeSong.data,
+        i : randomNum,
+        isPlaying: activeSong.isPlaying,
+        song: currentSongs[randomNum]
+      }
+      dispatch(setActiveSong({song, data, i}));
+      dispatch(playPause(true));
+
     }
   };
 
   const handlePrevSong = () => {
-    if (currentIndex === 0) {
-      dispatch(prevSong(currentSongs.length - 1));
+    if (activeSong.i === 0) {
+      // dispatch(prevSong(currentSongs.length - 1));
+      const randomNum =  currentSongs.length-1;
+      const data = activeSong.data;
+      const i = activeSong.i;
+      const song = {
+        activeSong : activeSong.activeSong,
+        data : activeSong.data,
+        i : randomNum,
+        isPlaying: activeSong.isPlaying,
+        song: currentSongs[randomNum]
+      }
+      dispatch(setActiveSong({song, data, i}));
+      dispatch(playPause(true));
     } else if (shuffle) {
-      dispatch(prevSong(Math.floor(Math.random() * currentSongs.length)));
+      // dispatch(prevSong(Math.floor(Math.random() * currentSongs.length)));
+      const randomNum = (Math.floor(Math.random() * currentSongs.length));
+      const data = activeSong.data;
+      const i = activeSong.i;
+      const song = {
+        activeSong : activeSong.activeSong,
+        data : activeSong.data,
+        i : randomNum,
+        isPlaying: activeSong.isPlaying,
+        song: currentSongs[randomNum]
+      }
+      dispatch(setActiveSong({song, data, i}));
+      dispatch(playPause(true));
     } else {
-      dispatch(prevSong(currentIndex - 1));
+      const randomNum = (activeSong.i - 1) % currentSongs.length;
+      const data = activeSong.data;
+      const i = activeSong.i;
+      const song = {
+        activeSong : activeSong.activeSong,
+        data : activeSong.data,
+        i : randomNum,
+        isPlaying: activeSong.isPlaying,
+        song: currentSongs[randomNum]
+      }
+      dispatch(setActiveSong({song, data, i}));
+      dispatch(playPause(true));
     }
   };
 

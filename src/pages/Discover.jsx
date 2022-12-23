@@ -19,8 +19,14 @@ const Discover = () => {
 
   if (isFetching) return <Loader title="Loading songs..." />;
 
-  console.log(activeSong);
-    
+ 
+  const newData = [];
+  data.forEach( x=> {
+    if(x.images != undefined){
+      newData.push(x);
+    }
+  });
+  // console.log(hello);
 
   return (
     <div className="flex flex-col">
@@ -38,14 +44,14 @@ const Discover = () => {
         </select>
       </div>
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-      {data.map((song, i) => (
+      {newData.map((song, i) => (
         <SongCard
           key={song.key}
           song={song}
           i={i} 
           isPlaying={isPlaying}
           activeSong={activeSong}
-          data={data}
+          data={newData}
           />
       ))}
       </div>
