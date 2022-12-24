@@ -16,7 +16,7 @@ const SongDetails = () => {
 
     const {activeSong, isPlaying} = useSelector((state) =>state.player);
     const {data: songData, isFetch: isFetchingSongDetails} = useGetSongDetailsQuery({songid});
-
+    // console.log(useGetSongDetailsQuery({songid}));
 
     if(isFetchingSongDetails || isFetchingRleatedSongs) return <Loader title="Searching song details" />
 
