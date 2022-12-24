@@ -25,6 +25,8 @@ const App = () => {
               <Route path="/search/:searchTerm" element={<Search />} />
             </Routes>
           </div>
+
+          {/* since topplay and music player are outside of the routes, it will show up no matter what page we are on */}
           <div className="xl:sticky relative top-0 h-fit">
             <TopPlay />
           </div>

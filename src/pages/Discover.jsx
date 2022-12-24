@@ -19,14 +19,14 @@ const Discover = () => {
 
   if (isFetching) return <Loader title="Loading songs..." />;
 
- 
+//  console.log(data);
   const newData = [];
   data.forEach( x=> {
     if(x.images != undefined){
       newData.push(x);
     }
   });
-  // console.log(hello);
+  // consol.log(hello);
 
   return (
     <div className="flex flex-col">

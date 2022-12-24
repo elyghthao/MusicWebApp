@@ -26,8 +26,8 @@ const Sidebar = () => {
 
   return (
     <>
-    {/* desktop version of menu, becomes hidden when small screen */}
-      <div className="md:flex hidden flex-col w-w[240px] py-10 px-4 bg-[#191624]">
+    {/* desktop version of menu, is hidden on everything else */}
+      <div className="md:flex  hidden flex-col w-w[240px] py-10 px-4 bg-[#191624]">
         <img src={logo} alt="logo" className="w-full h-14" />
         <NavLinks />
       </div>
@@ -40,7 +40,7 @@ const Sidebar = () => {
       </div>
 
 
-      {/* mobile version of menu (only shows when mobile menu is open) */}
+      {/* mobile version of menu (only shows when mobileopen is true, hidden when desktop version) */}
       <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 
       to-[#483d8b backdrop-blur-lg z-10 p-6 md:hidden smooth-transition ${mobileMenuOpen ? 
       'left-0' : '-left-full'}`}>
