@@ -6,6 +6,7 @@ import { setActiveSong, playPause } from "../redux/features/playerSlice";
 
 import { useGetSongDetailsQuery, useGetSongRelatedQuery, useGetArtistDetailsQuery } from "../redux/services/shazamCore2";
 import { useEffect, useRef } from "react";
+import ReactHtmlParser from 'react-html-parser'; 
 
 
 
@@ -31,16 +32,19 @@ const ArtistDetails = () => {
 
     // console.log()
     // console.log(artistData?.data[0]?.attributes?.artistBio);
-    console.log(artistData);
+    // console.log(artistData);
+   
     return (
         <div  className="flex flex-col ">
             <ArtistDetailsHeader artistData={artistData}/>
             <div className="mb-1">
                 <h2 className="text-white text-5xl font-bold">Bio</h2>
-                <div className="mt-5">
+                <div className="mt-5  whitespace-pre-line">
                     {artistData?.data[0]?.attributes?.artistBio ?  
-                    ((<p key={artistData?.data[0].id} className="text-gray-400 tet-base my-1">{artistData?.data[0]?.attributes?.artistBio}</p>)) : 
+                    ((<p key={artistData?.data[0].id} className="text-white tet-base my-1 ">
+                        {ReactHtmlParser(artistData?.data[0]?.attributes?.artistBio)}</p>)) : 
                     (<p className="text-gray-400 tet-base my-1">Sorry, no bio</p>)}
+                    {/* {ReactHtmlParser(artistData?.data[0]?.attributes?.artistBio)} */}
                 </div>
             </div>
         </div>
