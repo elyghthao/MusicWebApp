@@ -20,7 +20,7 @@ const TopChartCard = (song, i, isPlaying, activeSong, handlePauseClick, handlePl
 
   return (
     <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg curor-pointer mb-2">
-      <h3 className="fot-bold text-base text-white mr-3">{song?.i+1}.</h3>
+      <h3 className="font-bold text-base text-white mr-3">{song?.i+1}.</h3>
       <div className="flex-1 flex flex-row justify-between items-center">
         <img className="w-20 h-20 rounded-lg" src={song?.song?.images?.coverart} alt={song?.title} />
         <div className="flex-1 flex flex-col justify-center mx-3">
@@ -74,7 +74,7 @@ const TopPlay = () => {
 
 
   const handlePauseClick = () =>{
-    console.log("in pause click");
+    // console.log("in pause click");
     dispatch(playPause(false));
   };
   const handlePlayClick = (song) =>{

@@ -1,5 +1,7 @@
-const ArtistDetails = () => (
-  <div>ArtistDetails</div>
-);
+import { useParams } from "react-router-dom";
+
+
+const ArtistDetails = () => {
+}
 
 export default ArtistDetails;
