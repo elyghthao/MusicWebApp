@@ -7,7 +7,7 @@ const SongBar = ({ data, song, i, artistId, isPlaying, activeSong, handlePauseCl
 
   // console.log(song);
   // console.log(activeSong);
-
+  // console.log(activeSong);
   const newSong = {
     song: song,
     data: data,
@@ -16,6 +16,15 @@ const SongBar = ({ data, song, i, artistId, isPlaying, activeSong, handlePauseCl
     isPlaying: isPlaying
 
   }
+  // console.log(newSong);
+  // console.log(newSong.isPlaying);
+  // console.log(Object.keys(newSong.activeSong).length);
+  // console.log(newSong?.activeSong?.song?.title);
+  // console.log(newSong.song.title);
+  // console.log((newSong.isPlaying && (Object.keys(newSong.activeSong).length !== 0) && 
+  // (newSong.activeSong.song.title == newSong.song.title)));
+
+  
   return(
     <div className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${activeSong?.title === song?.title ? 'bg-[#4c426e]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
       <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
@@ -45,9 +54,9 @@ const SongBar = ({ data, song, i, artistId, isPlaying, activeSong, handlePauseCl
       {!artistId
         ? (
           <PlayPause
-            isPlaying={isPlaying}
-            activeSong={activeSong}
-            song={song}
+            isPlaying={newSong.isPlaying}
+            activeSong={newSong.activeSong}
+            song={newSong}
             handlePause={handlePauseClick}
             handlePlay={() => handlePlayClick(newSong)}
             i={i}

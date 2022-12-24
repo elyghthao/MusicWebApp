@@ -78,8 +78,8 @@ const TopPlay = () => {
     dispatch(playPause(false));
   };
   const handlePlayClick = (song) =>{
-    console.log("in play click topplay");
-    console.log(song);
+    // console.log("in play click topplay");
+    // console.log(song);
     const i = song.i;
     // let newSong = ({...song}._doc);
     // console.log(newSong);

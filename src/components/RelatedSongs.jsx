@@ -1,8 +1,10 @@
 import SongBar from './SongBar';
+import { useSelector, useDispatch } from "react-redux";
 
 
 const RelatedSongs = ({data, isPlaying, activeSong, handlePauseClick, handlePlayClick, artistId}) => {
   
+  // const {activeSong, isPlaying} = useSelector((state) =>state.player);
 
   const newData = [];
   if(data != undefined){

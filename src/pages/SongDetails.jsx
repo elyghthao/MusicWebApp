@@ -26,18 +26,25 @@ const SongDetails = () => {
     divRef.current.scrollIntoView({behavior: 'smooth'})
   });
 
-
+  // console.log(isPlaying);
   const handlePauseClick = () => {
     dispatch(playPause(false));
   }
   const handlePlayClick = (song) =>{
-    // console.log("playclick songcard");
+    
+    const newSong = Object.assign({}, song);
+    song.activeSong = newSong;
+    dispatch(playPause(true));
+
     console.log("in handleplayclick songdetails")
-    console.log(song);
-    // console.log(data);
+    // console.log(song);
+    // console.log(song.isPlaying);
+    // console.log(Object.keys(song.activeSong).length);
+    // console.log(song.activeSong.song.title);
+    // console.log(song.song.title);
     const i = song.i;
     dispatch(setActiveSong({song, data, i}));//keep data and song as it is
-    dispatch(playPause(true));
+    
   };
 
 
