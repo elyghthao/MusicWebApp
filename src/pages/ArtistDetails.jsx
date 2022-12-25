@@ -21,21 +21,27 @@ const ArtistDetails = () => {
     const { data: artistData, isFetching: isFetchingArtistDetails, error} = useGetArtistDetailsQuery({artistId});
     // console.log(useGetArtistDetailsQuery({artistId}));
 
-    if(isFetchingArtistDetails) return <Loader title="Searching artist details" />
-    if(error) return <Error />;
+    
 
     // const divRef = useRef(null);
+    const divRef = useRef(null);
+    useEffect(() => {
+        if(divRef.current != null){
+            divRef.current.scrollIntoView({behavior: 'smooth'});
+        }
+        
+    });
 
-    // useEffect(() => {
-    //     divRef.current.scrollIntoView({behavior: 'smooth'})
-    // });
+
+    if(isFetchingArtistDetails) return <Loader title="Searching artist details" />
+    if(error) return <Error />;
 
     // console.log()
     // console.log(artistData?.data[0]?.attributes?.artistBio);
     // console.log(artistData);
    
     return (
-        <div  className="flex flex-col ">
+        <div  ref={divRef} className="flex flex-col ">
             <ArtistDetailsHeader artistData={artistData}/>
             <div className="mb-1">
                 <h2 className="text-white text-5xl font-bold">Bio</h2>
