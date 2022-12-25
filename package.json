@@ -1,9 +1,12 @@
 {
-  "name": "elagant-music-app",
+  "homepage": "https://elyghthao.github.io/MusicWebApp/"
+  "name": "MusicWebApp",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -29,6 +32,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.3",
     "vite": "^2.9.9"
