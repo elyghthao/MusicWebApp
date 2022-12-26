@@ -7,6 +7,7 @@ Music App Created with React, RapidAPI, Redux, and Tailwind CSS. Able to play an
 * React toolkit used to create Music Player, Widgets, and website layout
 * React and tailwind tools used to make website accesible on all devices
 * Supports search function
+* Uses Shazam Core API
 
 # [Try the app here](https://elyghthao.github.io/MusicWebApp/)
 <img src="./pics/web-app-discover-page.svg">
