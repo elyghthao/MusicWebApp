@@ -1,5 +1,5 @@
 {
-  "homepage": "https://elyghthao.github.io/MusicWebApp/",
+  "homepage": "https://elyghthao.github.io/MusicWebApp",
   "name": "music-web-app",
   "private": true,
   "version": "0.0.0",
@@ -7,12 +7,13 @@
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "react-scripts build",
+    "start": "react-scripts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
+    "buffer": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-html-parser": "^2.0.2",
@@ -36,5 +37,17 @@
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.3",
     "vite": "^2.9.9"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
