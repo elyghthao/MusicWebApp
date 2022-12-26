@@ -4,11 +4,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
-    "start": "react-scripts"
+    "start": "react-scripts start"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
@@ -20,6 +19,7 @@
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
     "swiper": "^8.4.2"
   },
   "devDependencies": {
