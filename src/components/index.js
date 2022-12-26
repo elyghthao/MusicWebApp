@@ -1,3 +1,4 @@
+
 import Sidebar from './Sidebar';
 import Searchbar from './Searchbar';
 import SongCard from './SongCard';
@@ -9,7 +10,7 @@ import RelatedSongs from './RelatedSongs';
 import MusicPlayer from './MusicPlayer';
 import Loader from './Loader';
 import Error from './Error';
-import ArtistDetailsHeader from './ArtistDetailsHeader'
+import ArtistDetailsHeader from './ArtistDetailsHeader';
 
 export {
   TopPlay,
@@ -23,5 +24,5 @@ export {
   MusicPlayer,
   Loader,
   Error,
-  ArtistDetailsHeader
+  ArtistDetailsHeader,
 };

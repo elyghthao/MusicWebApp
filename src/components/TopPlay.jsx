@@ -1,92 +1,80 @@
-import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import {Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode } from "swiper";
+
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode } from 'swiper';
 
 import PlayPause from './PlayPause';
-import { playPause, setActiveSong } from "../redux/features/playerSlice";
-import { useGetTopChartsQuery } from "../redux/services/shazamCore";
+import { playPause, setActiveSong } from '../redux/features/playerSlice';
+import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
-import { TopCharts } from "../pages";
+import { TopCharts } from '../pages';
 
-
-
-const TopChartCard = (song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick, data) => {
-  // console.log("song in topChart");
-  // console.log(song.handlePauseClick);
-
-  return (
-    <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg curor-pointer mb-2">
-      <h3 className="font-bold text-base text-white mr-3">{song?.i+1}.</h3>
-      <div className="flex-1 flex flex-row justify-between items-center">
-        <img className="w-20 h-20 rounded-lg" src={song?.song?.images?.coverart} alt={song?.title} />
-        <div className="flex-1 flex flex-col justify-center mx-3">
-          <Link to={`/songs/${song?.song?.key}`}>
-            <p className="text-xl font-bold text-white">{song?.song?.title}</p>
-          </Link>
-          <Link to={`/artists/${song?.song.artists[0].adamid}`}>
-            <p className="text-base mt-1 text-gray-300">{song?.song?.subtitle}</p>
-          </Link>
-        </div>
+const TopChartCard = (song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick, data) => (
+  <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg curor-pointer mb-2">
+    <h3 className="font-bold text-base text-white mr-3">{song?.i + 1}.</h3>
+    <div className="flex-1 flex flex-row justify-between items-center">
+      <img className="w-20 h-20 rounded-lg" src={song?.song?.images?.coverart} alt={song?.title} />
+      <div className="flex-1 flex flex-col justify-center mx-3">
+        <Link to={`/songs/${song?.song?.key}`}>
+          <p className="text-xl font-bold text-white">{song?.song?.title}</p>
+        </Link>
+        <Link to={`/artists/${song?.song.artists[0].adamid}`}>
+          <p className="text-base mt-1 text-gray-300">{song?.song?.subtitle}</p>
+        </Link>
       </div>
-      <PlayPause 
+    </div>
+    <PlayPause
       isPlaying={isPlaying}
       activeSong={activeSong}
       song={song}
       handlePause={() => song?.handlePauseClick()}
-      handlePlay={() => song?.handlePlayClick(song)}/>
+      handlePlay={() => song?.handlePlayClick(song)}
+    />
   </div>
-  );
-  
-}
-
+);
 const TopPlay = () => {
   const dispatch = useDispatch();
-  const { activeSong, isPlaying } = useSelector( (state) => state.player);
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
 
   const { data, isFetching, error } = useGetTopChartsQuery();
   const divRef = useRef(null);
 
   useEffect(() => {
-    divRef.current.scrollIntoView({behavior: 'smooth'})
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [data]);
-  
-
-
 
   // if (isFetching) return <div></div>;
 
   // console.log(data);
   const newData = [];
-  if(data != undefined){
-    data.forEach( x=> {
+  if (data !== undefined) {
+    data.forEach((x) => {
       // console.log(x);
-      if(x.images != undefined){
+      if (x.images !== undefined) {
         newData.push(x);
       }
     });
   }
-  const topPlays = newData?.slice(0,5);
+  const topPlays = newData?.slice(0, 5);
 
-
-
-  const handlePauseClick = () =>{
+  const handlePauseClick = () => {
     // console.log("in pause click");
     dispatch(playPause(false));
   };
-  const handlePlayClick = (song) =>{
+  const handlePlayClick = (song) => {
     // console.log("in play click topplay");
     // console.log(song);
-    const i = song.i;
+    const { i } = song;
     // let newSong = ({...song}._doc);
     // console.log(newSong);
-    dispatch(setActiveSong({song, data, i}));
+    dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
-  
+
   return (
     <div ref={divRef} className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] mx-w-full flex flex-col">
       <div className="w-full flex flex-col">
@@ -98,21 +86,20 @@ const TopPlay = () => {
         </div>
 
         <div className="mt-4 flex flex-col gap-1">
-          {topPlays?.map((song,i) => (
+          {topPlays?.map((song, i) => (
             <TopChartCard
-            key={song.key} 
-            song={song} 
-            i={i}  
-            isPlaying={isPlaying} 
-            activeSong={activeSong} 
-            handlePauseClick={handlePauseClick} 
-            handlePlayClick= {handlePlayClick} 
-            data={newData}/>
+              key={song.key}
+              song={song}
+              i={i}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              handlePauseClick={handlePauseClick}
+              handlePlayClick={handlePlayClick}
+              data={newData}
+            />
           ))}
         </div>
       </div>
-      
-
 
       <div className="w-full flex flex-col mt-8">
         <div className="flex flex-row justify-between items-center">
@@ -122,31 +109,35 @@ const TopPlay = () => {
           </Link>
         </div>
 
-            {/* maybe look up more about swiper */}
-        <Swiper 
-        slidesPerView="auto"
-        spaceBetween={15}
-        freeMode
-        centeredSlidesBounds 
-        modules={[FreeMode]}
-        className="mt-4">
-          {topPlays?.map((song,i) => (
+        {/* maybe look up more about swiper */}
+        <Swiper
+          slidesPerView="auto"
+          spaceBetween={15}
+          freeMode
+          centeredSlidesBounds
+          modules={[FreeMode]}
+          className="mt-4"
+        >
+          {topPlays?.map((song, i) => (
             <SwiperSlide
-            key={song?.key}
-            style={{width: '25%', height: 'auto'}}
-            className="shadow-lg rounded-full animate-slideright">
+              key={song?.key}
+              style={{ width: '25%', height: 'auto' }}
+              className="shadow-lg rounded-full animate-slideright"
+            >
               <Link to={`/artists/${song?.artists[0].adamid}`}>
-                <img src={song?.images.background} alt="name"
-                className="rounded-full w-full object-cover" />
+                <img
+                  src={song?.images.background}
+                  alt="name"
+                  className="rounded-full w-full object-cover"
+                />
               </Link>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      
 
     </div>
-  )
-}
+  );
+};
 
 export default TopPlay;

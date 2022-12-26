@@ -1,13 +1,14 @@
 {
-  "homepage": "https://elyghthao.github.io/MusicWebApp",
+  "homepage": "https://elyghthao.github.io/MusicWebApp/",
   "name": "music-web-app",
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
-    "start": "react-scripts start"
+    "start": "react-scripts"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

@@ -1,16 +1,15 @@
-import { useState } from "react";
+/* eslint-disable no-unused-expressions */
+import { useState } from 'react';
 
-import { useNavigate } from "react-router-dom";
-import {FiSearch } from 'react-icons/fi';
-
+import { useNavigate } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi';
 
 const Searchbar = () => {
-
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault;
-    console.log(searchTerm);
+    // console.log(searchTerm);
     navigate(`/search/${searchTerm}`);
   };
 
@@ -23,19 +22,20 @@ const Searchbar = () => {
 
       <div className="flex flex-row justify-start items-center">
         <FiSearch className="w-5 h-5 ml-4" />
-        <input 
-        name=""
-        autoComplete="off"
-        id="search-field"
-        placeholder="Search"
-        type={"search"}
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="flex-1 bg-transparent border-none outline-none placeholder-gray-500 
-        text-base text-white p-4" />
+        <input
+          name=""
+          autoComplete="off"
+          id="search-field"
+          placeholder="Search"
+          type="search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="flex-1 bg-transparent border-none outline-none placeholder-gray-500
+        text-base text-white p-4"
+        />
       </div>
     </form>
   );
-}
+};
 
 export default Searchbar;
