@@ -1,6 +1,6 @@
 # MusicWebApp
 
-Music Player Created with React, RapidAPI, Redux, and Tailwind CSS
+Music App Created with React, RapidAPI, Redux, and Tailwind CSS. Able to play and view today's top music/artists.
 
 # Features:
 * API extraction and usage (Music information, artist information)
