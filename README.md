@@ -9,3 +9,4 @@ Music Player Created with React, RapidAPI, Redux, and Tailwind CSS
 * Supports search function
 
 # [Try the app here](https://elyghthao.github.io/MusicWebApp/)
+<img src="./pics/web-app-discover-page.svg">
