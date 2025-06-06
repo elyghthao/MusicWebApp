@@ -20,13 +20,13 @@ const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate
     ref.current.currentTime = seekTime;
   }, [seekTime]);
 
-  // console.log(state);
-  if(activeSong.song.hub.actions !== undefined){
+
+  if(activeSong.song["attributes"]["previews"][0]["url"] !== undefined){
     return (
       <audio
-      src={activeSong?.song?.hub?.actions[1]?.uri}
+      src={activeSong.song["attributes"]["previews"][0]["url"]}
       ref={ref}
-      loop={repeat}
+      loop={false}
       onEnded={onEnded}
       onTimeUpdate={onTimeUpdate}
       onLoadedData={onLoadedData}

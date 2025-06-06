@@ -22,6 +22,10 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
   };
   // console.log(handlePlayClick);
 
+
+  // console.log("i: " + i)
+  // console.log("song: " + song["attributes"]["name"])
+  console.log("artists: " + JSON.stringify(newSong["attributes"]["name"])) //working on 
   return (
     <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
       <div className="relative w-full h-56 group">
@@ -34,7 +38,7 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
             handlePlay={handlePlayClick}
           />
         </div>
-        <img alt="song_img" src={song.song.images?.coverart || 'https://th.bing.com/th/id/OIP.zl3PcrZaVLg5_htGHrHPAQAAAA?pid=ImgDet&rs=1'} />
+        <img alt="song_img" src={song.song["attributes"]["artwork"]["url"] || 'https://th.bing.com/th/id/OIP.zl3PcrZaVLg5_htGHrHPAQAAAA?pid=ImgDet&rs=1'} />
       </div>
 
       <div className="mt-4 flex flex-col">
@@ -44,7 +48,7 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
           </Link>
         </p>
         <p className="text-sm truncate text-gray-300 mt-1">
-          <Link to={`/artists/${song?.song.artists[0].adamid}`}>
+          <Link to={`/artists/${song.song["relationships"]["artists"]["href"]}`}>
             {song.song.subtitle}
           </Link>
         </p>

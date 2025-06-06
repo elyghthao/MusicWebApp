@@ -18,14 +18,17 @@ const Discover = () => {
 
   if (isFetching) return <Loader title="Loading songs..." />;
 
-  //  console.log(data);
+  //  console.log(data[0]);
+  //  console.log(data)
   const newData = [];
-  data?.forEach((x) => {
-    if (x.images !== undefined) {
+  data.forEach((x) => {
+    // console.log("x: " + x["attributes"]["artwork"]["url"])
+    if (x["attributes"]["artwork"]["url"] !== undefined) {
+      // console.log("adding this one: " + JSON.stringify(x["attributes"]["name"]) );
       newData.push(x);
     }
   });
-  // consol.log(hello);
+  // console.log("newData: " + newData)
 
   return (
     <div className="flex flex-col">
@@ -48,7 +51,7 @@ const Discover = () => {
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
         {newData.map((song, i) => (
           <SongCard
-            key={song.key}
+            key={i["id"]}
             song={song}
             i={i}
             isPlaying={isPlaying}
