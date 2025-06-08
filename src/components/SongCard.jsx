@@ -24,8 +24,10 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
 
 
   // console.log("i: " + i)
-  // console.log("song: " + song["attributes"]["name"])
-  console.log("artists: " + JSON.stringify(newSong["attributes"]["name"])) //working on 
+  // console.log("song: " + song.song)
+  // console.log(data[0]);
+  // console.log("here")
+  // console.log("artists: " + JSON.stringify(newSong["attributes"])) //working on 
   return (
     <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
       <div className="relative w-full h-56 group">
@@ -43,13 +45,13 @@ const SongCard = (song, isPlaying, activeSong, data, i) => {
 
       <div className="mt-4 flex flex-col">
         <p className="font-semibold text-lg text-white truncate">
-          <Link to={`/songs/${song?.song?.key}`}>
-            {song.song.title}
+          <Link to={`/songs/${song?.song["id"]}`}>
+            {song.song["attributes"]["name"]}
           </Link>
         </p>
         <p className="text-sm truncate text-gray-300 mt-1">
           <Link to={`/artists/${song.song["relationships"]["artists"]["href"]}`}>
-            {song.song.subtitle}
+            {song.song["attributes"]["artistName"]}
           </Link>
         </p>
       </div>

@@ -7,10 +7,10 @@ const Track = ({ isPlaying, isActive, activeSong }) => (
     </div>
     <div className="w-[50%]">
       <p className="truncate text-white font-bold text-lg">
-        {activeSong.song["attributes"]["name"] ? activeSong?.song.title : 'No active Song'} //trying to get name on player to load
+        {activeSong.song["attributes"]["name"] ? activeSong.song["attributes"]["name"] : 'No active Song'} 
       </p>
       <p className="truncate text-gray-300">
-        {activeSong?.song.subtitle ? activeSong?.song.subtitle : 'No active Song'}
+        {activeSong.song["attributes"]["artistName"] ? activeSong.song["attributes"]["artistName"] : 'No active Song'}
       </p>
     </div>
   </div>
