@@ -1,1 +1,5 @@
-run the app with npm run dev
+run the app locally with npm run dev
+upload to github pages version with: npm run deploy
+
+
+followed this migration guide: https://www.robinwieruch.de/vite-create-react-app/

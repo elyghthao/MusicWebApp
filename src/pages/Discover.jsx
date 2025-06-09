@@ -18,10 +18,10 @@ const Discover = () => {
 
   if (isFetching) return <Loader title="Loading songs..." />;
 
-  //  console.log(data[0]);
-  //  console.log(data)
+  //  console.log("data[0]: " + data[0]);
+  //  console.log("data: " + data)
   const newData = [];
-  data.forEach((x) => {
+  data?.forEach((x) => {
     // console.log("x: " + x["attributes"]["artwork"]["url"])
     if (x["attributes"]["artwork"]["url"] !== undefined) {
       // console.log("adding this one: " + JSON.stringify(x["attributes"]["name"]) );
@@ -51,7 +51,7 @@ const Discover = () => {
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
         {newData.map((song, i) => (
           <SongCard
-            key={i["id"]}
+            key={i}
             song={song}
             i={i}
             isPlaying={isPlaying}
